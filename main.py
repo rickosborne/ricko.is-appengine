@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 from google.appengine.api import users
-from LoginHandler import LoginHandler
-from LogoutHandler import LogoutHandler
-from NewLinkHandler import NewLinkHandler
-from TemplatedHandler import TemplatedHandler
-import GoLinkModel
+from rickois.handler.LoginHandler import LoginHandler
+from rickois.handler.LogoutHandler import LogoutHandler
+from rickois.handler.NewLinkHandler import NewLinkHandler
+from rickois.handler.TemplatedHandler import TemplatedHandler
+from rickois.model import GoLinkModel
 import webapp2
 
 class MainHandler(TemplatedHandler):
@@ -29,3 +29,4 @@ app = webapp2.WSGIApplication([
     ('/_/new', NewLinkHandler),
     ('.*', MainHandler)
 ], debug=True)
+
