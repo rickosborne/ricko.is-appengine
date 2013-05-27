@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+{% block title %}Stats{% endblock %}
+{% block body %}
+<h1>Stats</h1>
+<dl>
+	<dt>Name:</dt>
+	<dd>{{ link.name|safe }}</dd>
+	<dt>Destination:</dt>
+	<dd>{{ link.href|safe }}</dd>
+	<dt>Title:</dt>
+	<dd>{{ link.title|safe }}</dd>
+</dl>
+{% endblock %}

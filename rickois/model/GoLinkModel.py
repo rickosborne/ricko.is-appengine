@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from google.appengine.ext import db
+from google.appengine.api import users
 
 class GoLink(db.Model):
     name = db.StringProperty(verbose_name='Unique short identifier', multiline=False, required=True, indexed=True)
@@ -11,6 +12,9 @@ class GoLink(db.Model):
     peeks = db.IntegerProperty(verbose_name='Total requests for metadata', default=0, required=True)
     href = db.LinkProperty(verbose_name='Destination address', required=True)
     title = db.StringProperty(verbose_name='Human-readable title of the destination', required=True)
+    
+    def put(self):
+        db.Model.put(self)
 
 def get_golink(name=None):
     if not name:
@@ -18,3 +22,7 @@ def get_golink(name=None):
     key = db.Key.from_path('GoLink', name)
     link = db.get(key)
     return link
+
+def new_golink(name, href, title):
+    link = GoLink(key_name=name, name=name, href=href, title=title, ownerid=users.get_current_user().user_id(), hits=0, peeks=0)
+    link.put()

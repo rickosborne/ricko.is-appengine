@@ -1,2 +1,18 @@
 {% extends "_base.html" %}
 {% block title %}New Link | ricko.is{% endblock %}
+{% block body %}
+<h1>New Link</h1>
+{{ error }}
+<form method="post">
+<dl>
+	<dt>Name:</dt>
+	<dd><input type="text" name="name" id="name" value="{{ name|safe }}"></dd>
+	<dt>Destination:</dt>
+	<dd><input type="text" name="href" id="href" value="{{ href|safe }}"></dd>
+	<dt>Title:</dt>
+	<dd><input type="text" name="title" id="title" value="{{ title|safe }}"></dd>
+	<dt>&nbsp;</dt>
+	<dd><input type="submit"></dd>
+</dl>
+</form>
+{% endblock %}
