@@ -23,6 +23,15 @@ class TemplatedHandler(webapp2.RequestHandler):
             path = path[:-1]
         return path
     
+    def ip(self):
+        return self.request.remote_addr
+    
+    def ua(self):
+        return self.request.headers.get('User-Agent', None)
+    
+    def referer(self):
+        return self.request.headers.get('Referer', None)
+    
     def path_link(self):
         return get_golink(self.path())
     
