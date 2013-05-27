@@ -12,13 +12,19 @@ JINJA_ENVIRONMENT = jinja2.Environment(autoescape=True, loader=jinja2.FileSystem
 
 class TemplatedHandler(webapp2.RequestHandler):
     
-    def path_link(self):
+    def path_ispeek(self):
+        return (self.request.path[-1:] == '+')
+    
+    def path(self):
         path = self.request.path
         if path[:1] == '/': # trim leading slash
             path = path[1:]
-        if path[-1:] == '+':
+        if path[-1:] == '+': # trim trailing +
             path = path[:-1]
-        return get_golink(path)
+        return path
+    
+    def path_link(self):
+        return get_golink(self.path())
     
     def render(self, name, values={}):
         template = JINJA_ENVIRONMENT.get_template(name)
