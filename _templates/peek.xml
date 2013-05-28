@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <status_code>{{ status_code }}</status_code>
+    <status_txt>{{ status_txt }}</status_txt>
+    <data>
+        <created>{{ data.created }}</created>
+        <hits>{{ data.hits }}</hits>
+        <href>{{ data.href }}</href>
+        <name>{{ data.name }}</name>
+        <peeks>{{ data.peeks }}</peeks>
+        <title>{{ data.title }}</title>
+        <updated>{{ data.updated }}</updated>
+    </data>
+</response>

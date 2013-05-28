@@ -23,10 +23,14 @@ class MainHandler(TemplatedHandler):
         self.response.write('Link: %s' % link.href)
 
 app = webapp2.WSGIApplication([
-    ('/_/login', LoginHandler),
-    ('/_/logout', LogoutHandler),
-    ('/_/new', NewLinkHandler),
-    ('.*\\+', PeekHandler),
+    ('^/_/login$', LoginHandler),
+    ('^/_/logout$', LogoutHandler),
+    ('^/_/new$', NewLinkHandler),
+    ('^.*\\.json$', PeekHandler),
+    ('^.*\\.js$', PeekHandler),
+    ('^.*\\.yaml$', PeekHandler),
+    ('^.*\\.xml$', PeekHandler),
+    ('^.*\\+$', PeekHandler),
     ('.*', MainHandler)
 ], debug=True)
 
