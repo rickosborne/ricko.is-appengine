@@ -26,6 +26,7 @@ def hit_golink(name, ip, referer=None, ua=None):
     if users.get_current_user(): return
     link = hit_golink_update(name, ip, referer, ua)
     new_gohit(link, ip, referer, ua, False)
+    return link
 
 @db.transactional
 def peek_golink_update(name, ip, referer=None, ua=None):
@@ -39,6 +40,7 @@ def peek_golink(name, ip, referer=None, ua=None):
     if users.get_current_user(): return
     link = peek_golink_update(name, ip, referer, ua)
     new_gohit(link, ip, referer, ua, True)
+    return link
 
 def get_golink(name=None):
     if not name:

@@ -19,7 +19,7 @@ class MainHandler(TemplatedHandler):
             else:
                 self.render('index.html')
             return
-        hit_golink(link.name, self.ip(), self.referer(), self.ua())
+        link = hit_golink(link.name, self.ip(), self.referer(), self.ua())
         self.response.write('Link: %s' % link.href)
 
 app = webapp2.WSGIApplication([

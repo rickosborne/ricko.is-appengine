@@ -9,6 +9,5 @@ class PeekHandler(TemplatedHandler):
         if not link:
             self.render('missing.html')
             return
-        peek_golink(link.name, self.ip(), self.referer(), self.ua())
+        link = peek_golink(link.name, self.ip(), self.referer(), self.ua())
         self.render('peek.html', {'link': link})
-
